@@ -2,6 +2,9 @@ import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PetsModule } from './pets/pets.module';
+import { AuthController } from './auth/auth.controller';
+import { AuthModule } from './auth/auth.module';
+
 
 @Module({
   imports: [
@@ -10,9 +13,10 @@ import { PetsModule } from './pets/pets.module';
     }),
     MongooseModule.forRoot(process.env.DB_HOST),
     PetsModule,
+    AuthModule,
   ],
-  controllers: [],
   providers: [],
+  controllers: [AuthController],
 })
 export class AppModule {}
 
